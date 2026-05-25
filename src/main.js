@@ -31,6 +31,7 @@ async function fetchPhotos(query, page, signal) {
 }
 
 async function search(query) {
+  // si hay una búsqueda en curso la cancelo
   if (searchController) searchController.abort();
   searchController = new AbortController();
 
@@ -42,6 +43,7 @@ async function search(query) {
   try {
     const data = await fetchPhotos(currentQuery, currentPage, searchController.signal);
     const hasMore = data.results.length === PER_PAGE;
+    document.title = `${currentQuery} · Pinterest Async`;
     gallery.setQuery(currentQuery);
     gallery.render(data.results, data.total, hasMore);
   } catch (error) {
@@ -55,8 +57,9 @@ async function loadMore() {
   gallery.setLoadingMore(true);
 
   try {
-    const data = await fetchPhotos(currentQuery, currentPage + 1);
-    currentPage++;
+    const nextPage = currentPage + 1;
+    const data = await fetchPhotos(currentQuery, nextPage);
+    currentPage = nextPage;
     const hasMore = data.results.length === PER_PAGE;
     gallery.append(data.results, hasMore);
   } catch (error) {
@@ -66,6 +69,7 @@ async function loadMore() {
 }
 
 function reset() {
+  document.title = 'Pinterest Async';
   search(INITIAL_QUERY);
 }
 

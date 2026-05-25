@@ -6,10 +6,10 @@ export function Gallery({ onLoadMore }) {
   const wrapper = document.createElement('div');
   wrapper.className = 'gallery-wrapper';
 
-  const labelQuery = document.createElement('p');
-  labelQuery.className = 'gallery__query-label';
-  labelQuery.hidden = true;
-  wrapper.appendChild(labelQuery);
+  const queryLabel = document.createElement('p');
+  queryLabel.className = 'gallery__query-label';
+  queryLabel.hidden = true;
+  wrapper.appendChild(queryLabel);
 
   const info = document.createElement('p');
   info.className = 'gallery__info';
@@ -39,7 +39,7 @@ export function Gallery({ onLoadMore }) {
     loadingMsg.textContent = 'Cargando...';
     section.appendChild(loadingMsg);
     info.hidden = true;
-    labelQuery.hidden = true;
+    queryLabel.hidden = true;
     loadMoreBtn.hidden = true;
   }
 
@@ -59,7 +59,7 @@ export function Gallery({ onLoadMore }) {
 
     if (photos.length === 0) {
       info.hidden = true;
-      labelQuery.hidden = true;
+      queryLabel.hidden = true;
       const emptyMsg = document.createElement('p');
       emptyMsg.className = 'gallery__empty';
       emptyMsg.textContent = 'No se encontraron fotos.';
@@ -70,19 +70,14 @@ export function Gallery({ onLoadMore }) {
     info.textContent = total + ' resultados';
     info.hidden = false;
 
-    for (let i = 0; i < photos.length; i++) {
-      section.appendChild(Card(photos[i]));
-    }
+    photos.forEach(photo => section.appendChild(Card(photo)));
 
     loadMoreBtn.hidden = !hasMore;
   }
 
   function append(photos, hasMore) {
     loadMoreError.hidden = true;
-    for (let i = 0; i < photos.length; i++) {
-      section.appendChild(Card(photos[i]));
-    }
-
+    photos.forEach(photo => section.appendChild(Card(photo)));
     loadMoreBtn.hidden = !hasMore;
     setLoadingMore(false);
   }
@@ -100,8 +95,8 @@ export function Gallery({ onLoadMore }) {
   }
 
   function setQuery(query) {
-    labelQuery.textContent = `Resultados para: "${query}"`;
-    labelQuery.hidden = false;
+    queryLabel.textContent = `Resultados para: "${query}"`;
+    queryLabel.hidden = false;
   }
 
   return {

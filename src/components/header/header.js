@@ -1,14 +1,14 @@
 import './header.css';
 
-function showToast(msg) {
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.classList.add('toast--visible'), 10);
+function showToast(message) {
+  const toastEl = document.createElement('div');
+  toastEl.className = 'toast';
+  toastEl.textContent = message;
+  document.body.appendChild(toastEl);
+  setTimeout(() => toastEl.classList.add('toast--visible'), 10);
   setTimeout(() => {
-    t.classList.remove('toast--visible');
-    setTimeout(() => t.remove(), 300);
+    toastEl.classList.remove('toast--visible');
+    setTimeout(() => toastEl.remove(), 300);
   }, 2600);
 }
 
@@ -54,7 +54,7 @@ export function Header({ onSearch, onReset }) {
   createBtn.textContent = 'Crear';
   createBtn.className = 'header__nav-button';
   createBtn.addEventListener('click', () => {
-    showToast('esto lo añado luego 😅');
+    showToast('📌 inicia sesión para crear pines');
   });
   nav.appendChild(createBtn);
 
@@ -68,9 +68,11 @@ export function Header({ onSearch, onReset }) {
   searchDiv.appendChild(searchIcon);
 
   const input = document.createElement('input');
-  input.type = 'text';
+  input.type = 'search';
   input.className = 'header__input';
   input.placeholder = 'Buscar';
+  input.autocomplete = 'off';
+  input.spellcheck = false;
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const query = input.value.trim();
@@ -84,9 +86,9 @@ export function Header({ onSearch, onReset }) {
 
   const searchBtn = document.createElement('button');
   searchBtn.className = 'header__search-button';
-  const iconBtn = document.createElement('i');
-  iconBtn.className = 'ri-search-line';
-  searchBtn.appendChild(iconBtn);
+  const searchBtnIcon = document.createElement('i');
+  searchBtnIcon.className = 'ri-search-line';
+  searchBtn.appendChild(searchBtnIcon);
   searchBtn.addEventListener('click', () => {
     const query = input.value.trim();
     if (query) {
@@ -103,8 +105,9 @@ export function Header({ onSearch, onReset }) {
 
   const bellBtn = document.createElement('button');
   bellBtn.className = 'header__icon-button';
+  bellBtn.setAttribute('aria-label', 'Notificaciones');
   bellBtn.addEventListener('click', () => {
-    showToast('sin notis por aquí');
+    showToast('🔕 sin notas por aquí');
   });
 
   const bellIcon = document.createElement('i');
@@ -115,8 +118,9 @@ export function Header({ onSearch, onReset }) {
 
   const chatBtn = document.createElement('button');
   chatBtn.className = 'header__icon-button';
+  chatBtn.setAttribute('aria-label', 'Mensajes');
   chatBtn.addEventListener('click', () => {
-    showToast('bandeja vacía 👌');
+    showToast('✉️ bandeja vacía');
   });
 
   const chatIcon = document.createElement('i');

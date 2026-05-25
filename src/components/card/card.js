@@ -4,32 +4,33 @@ export function Card(photo) {
   const article = document.createElement('article');
   article.className = 'card';
 
-  const imgWrapper = document.createElement('div');
-  imgWrapper.className = 'card__image-wrapper';
-  article.appendChild(imgWrapper);
+  const imageWrapper = document.createElement('div');
+  imageWrapper.className = 'card__image-wrapper';
+  article.appendChild(imageWrapper);
 
   const img = document.createElement('img');
   img.className = 'card__image';
   img.src = photo.urls.small;
   img.alt = photo.alt_description || 'Foto';
-  imgWrapper.appendChild(img);
+  img.loading = 'lazy';
+  imageWrapper.appendChild(img);
 
   const overlay = document.createElement('div');
   overlay.className = 'card__overlay';
-  imgWrapper.appendChild(overlay);
+  imageWrapper.appendChild(overlay);
 
-  const visitBtn = document.createElement('a');
-  visitBtn.className = 'card__visit-button';
-  visitBtn.href = photo.links.html;
-  visitBtn.target = '_blank';
-  visitBtn.rel = 'noreferrer';
-  visitBtn.textContent = 'Visitar';
-  overlay.appendChild(visitBtn);
+  const visitLink = document.createElement('a');
+  visitLink.className = 'card__visit-button';
+  visitLink.href = photo.links.html;
+  visitLink.target = '_blank';
+  visitLink.rel = 'noreferrer';
+  visitLink.textContent = 'Visitar';
+  overlay.appendChild(visitLink);
 
-  const likes = document.createElement('span');
-  likes.className = 'card__likes-overlay';
-  likes.textContent = '❤ ' + photo.likes;
-  overlay.appendChild(likes);
+  const likesEl = document.createElement('span');
+  likesEl.className = 'card__likes-overlay';
+  likesEl.textContent = '❤ ' + photo.likes;
+  overlay.appendChild(likesEl);
 
   const info = document.createElement('div');
   info.className = 'card__info';

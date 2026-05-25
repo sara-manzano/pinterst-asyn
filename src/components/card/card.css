@@ -12,6 +12,11 @@
   transform: translateY(-3px);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}
+
 .card__image-wrapper {
   position: relative;
   display: block;
