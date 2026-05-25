@@ -27,6 +27,11 @@ export function Gallery({ onLoadMore }) {
   loadMoreBtn.addEventListener('click', onLoadMore);
   wrapper.appendChild(loadMoreBtn);
 
+  const loadMoreError = document.createElement('p');
+  loadMoreError.className = 'gallery__load-more-error';
+  loadMoreError.hidden = true;
+  wrapper.appendChild(loadMoreError);
+
   function showLoading() {
     section.replaceChildren();
     const loadingMsg = document.createElement('p');
@@ -73,6 +78,7 @@ export function Gallery({ onLoadMore }) {
   }
 
   function append(photos, hasMore) {
+    loadMoreError.hidden = true;
     for (let i = 0; i < photos.length; i++) {
       section.appendChild(Card(photos[i]));
     }
@@ -84,6 +90,13 @@ export function Gallery({ onLoadMore }) {
   function setLoadingMore(isLoading) {
     loadMoreBtn.disabled = isLoading;
     loadMoreBtn.textContent = isLoading ? 'Cargando...' : 'Cargar más';
+    if (isLoading) loadMoreError.hidden = true;
+  }
+
+  function showLoadMoreError(message) {
+    loadMoreError.textContent = message;
+    loadMoreError.hidden = false;
+    setTimeout(() => { loadMoreError.hidden = true; }, 4000);
   }
 
   function setQuery(query) {
@@ -97,6 +110,7 @@ export function Gallery({ onLoadMore }) {
     append,
     showLoading,
     showError,
+    showLoadMoreError,
     setLoadingMore,
     setQuery,
   };

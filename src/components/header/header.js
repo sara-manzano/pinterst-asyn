@@ -1,5 +1,17 @@
 import './header.css';
 
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.classList.add('toast--visible'), 10);
+  setTimeout(() => {
+    t.classList.remove('toast--visible');
+    setTimeout(() => t.remove(), 300);
+  }, 2600);
+}
+
 export function Header({ onSearch, onReset }) {
 
   const header = document.createElement('header');
@@ -34,7 +46,7 @@ export function Header({ onSearch, onReset }) {
   exploreBtn.className = 'header__nav-button';
   exploreBtn.addEventListener('click', () => {
     input.value = '';
-    onSearch('nature');
+    onSearch('arquitectura');
   });
   nav.appendChild(exploreBtn);
 
@@ -42,7 +54,7 @@ export function Header({ onSearch, onReset }) {
   createBtn.textContent = 'Crear';
   createBtn.className = 'header__nav-button';
   createBtn.addEventListener('click', () => {
-    alert('Función disponible próximamente.');
+    showToast('esto lo añado luego 😅');
   });
   nav.appendChild(createBtn);
 
@@ -92,7 +104,7 @@ export function Header({ onSearch, onReset }) {
   const bellBtn = document.createElement('button');
   bellBtn.className = 'header__icon-button';
   bellBtn.addEventListener('click', () => {
-    alert('No tienes notificaciones nuevas.');
+    showToast('sin notis por aquí');
   });
 
   const bellIcon = document.createElement('i');
@@ -104,7 +116,7 @@ export function Header({ onSearch, onReset }) {
   const chatBtn = document.createElement('button');
   chatBtn.className = 'header__icon-button';
   chatBtn.addEventListener('click', () => {
-    alert('No tienes mensajes nuevos.');
+    showToast('bandeja vacía 👌');
   });
 
   const chatIcon = document.createElement('i');

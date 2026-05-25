@@ -62,6 +62,14 @@
   cursor: not-allowed;
 }
 
+.gallery__load-more-error {
+  text-align: center;
+  color: var(--primary);
+  font-size: 13px;
+  margin: 0 0 24px;
+  padding: 0 16px;
+}
+
 @media (max-width: 900px) {
   .gallery { columns: 3 180px; }
 }
