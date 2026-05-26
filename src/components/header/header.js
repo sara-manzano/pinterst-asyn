@@ -1,19 +1,18 @@
 import './header.css';
 
 function showToast(message) {
-  const toastEl = document.createElement('div');
-  toastEl.className = 'toast';
-  toastEl.textContent = message;
-  document.body.appendChild(toastEl);
-  setTimeout(() => toastEl.classList.add('toast--visible'), 10);
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('toast--visible'), 10);
   setTimeout(() => {
-    toastEl.classList.remove('toast--visible');
-    setTimeout(() => toastEl.remove(), 300);
+    toast.classList.remove('toast--visible');
+    setTimeout(() => toast.remove(), 300);
   }, 2600);
 }
 
 export function Header({ onSearch, onReset }) {
-
   const header = document.createElement('header');
   header.className = 'header';
 
@@ -29,40 +28,38 @@ export function Header({ onSearch, onReset }) {
   const icon = document.createElement('i');
   icon.className = 'ri-pinterest-fill';
   logo.appendChild(icon);
-
   header.appendChild(logo);
 
   const nav = document.createElement('nav');
   nav.className = 'header__nav';
 
-  const homeBtn = document.createElement('button');
-  homeBtn.textContent = 'Inicio';
-  homeBtn.className = 'header__nav-button header__nav-button--active';
-  homeBtn.addEventListener('click', handleReset);
-  nav.appendChild(homeBtn);
+  const btnHome = document.createElement('button');
+  btnHome.textContent = 'Inicio';
+  btnHome.className = 'header__nav-button header__nav-button--active';
+  btnHome.addEventListener('click', handleReset);
+  nav.appendChild(btnHome);
 
-  const exploreBtn = document.createElement('button');
-  exploreBtn.textContent = 'Explorar';
-  exploreBtn.className = 'header__nav-button';
-  exploreBtn.addEventListener('click', () => {
+  const btnExplore = document.createElement('button');
+  btnExplore.textContent = 'Explorar';
+  btnExplore.className = 'header__nav-button';
+  btnExplore.addEventListener('click', () => {
     input.value = '';
     onSearch('arquitectura');
   });
-  nav.appendChild(exploreBtn);
+  nav.appendChild(btnExplore);
 
-  const createBtn = document.createElement('button');
-  createBtn.textContent = 'Crear';
-  createBtn.className = 'header__nav-button';
-  createBtn.addEventListener('click', () => {
+  const btnCreate = document.createElement('button');
+  btnCreate.textContent = 'Crear';
+  btnCreate.className = 'header__nav-button';
+  btnCreate.addEventListener('click', () => {
     showToast('📌 inicia sesión para crear pines');
   });
-  nav.appendChild(createBtn);
+  nav.appendChild(btnCreate);
 
   header.appendChild(nav);
 
   const searchDiv = document.createElement('div');
   searchDiv.className = 'header__search';
-
   const searchIcon = document.createElement('i');
   searchIcon.className = 'header__search-icon ri-search-line';
   searchDiv.appendChild(searchIcon);
@@ -70,7 +67,6 @@ export function Header({ onSearch, onReset }) {
   const input = document.createElement('input');
   input.type = 'search';
   input.className = 'header__input';
-  input.placeholder = 'Buscar';
   input.autocomplete = 'off';
   input.spellcheck = false;
   input.addEventListener('keydown', (e) => {
@@ -84,19 +80,19 @@ export function Header({ onSearch, onReset }) {
   });
   searchDiv.appendChild(input);
 
-  const searchBtn = document.createElement('button');
-  searchBtn.className = 'header__search-button';
-  const searchBtnIcon = document.createElement('i');
-  searchBtnIcon.className = 'ri-search-line';
-  searchBtn.appendChild(searchBtnIcon);
-  searchBtn.addEventListener('click', () => {
+  const btnSearch = document.createElement('button');
+  btnSearch.className = 'header__search-button';
+  const btnSearchIcon = document.createElement('i');
+  btnSearchIcon.className = 'ri-search-line';
+  btnSearch.appendChild(btnSearchIcon);
+  btnSearch.addEventListener('click', () => {
     const query = input.value.trim();
     if (query) {
       onSearch(query);
       input.value = '';
     }
   });
-  searchDiv.appendChild(searchBtn);
+  searchDiv.appendChild(btnSearch);
 
   header.appendChild(searchDiv);
 
