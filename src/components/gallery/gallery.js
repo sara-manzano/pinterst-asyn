@@ -77,9 +77,14 @@ export function Gallery({ onLoadMore }) {
 
   function append(photos, hasMore) {
     loadMoreError.hidden = true;
+    const firstNew = section.lastElementChild;
     photos.forEach(photo => section.appendChild(Card(photo)));
     loadMoreBtn.hidden = !hasMore;
     setLoadingMore(false);
+    // Scroll automático al primer nuevo elemento
+    if (section.lastElementChild) {
+      section.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }
 
   function setLoadingMore(isLoading) {
