@@ -2,21 +2,31 @@
 
 Replica de la red social Pinterest utilizando Vanilla JS, CSS y la API de Unsplash.
 
+## Vista previa
+
+Aquí puedes ver cómo funciona la app:
+
+![Captura de pantalla de Pinterest Async](img/captura.png)
+
+## Demo en vivo
+
+[Ver demo aquí](https://dreamy-lebkuchen-b71410.netlify.app/)
+
 ## Características
 
-- Esta web busca imágenes en Unsplash.
-- Su diseño es moderno.
-- Su estructura está formada por componentes divididos en módulos (Header, Gallery, Card, Footer).
+- Diseño moderno y responsive.
+- Componentes divididos en módulos (Header, Gallery, Card, Footer).
 - Accesibilidad: navegación por teclado, aria-labels, mensajes claros y concisos.
 - Sin frameworks.
+- Puedes buscar cualquier cosa: “gatos”, “paisajes”, “arte”, lo que se te ocurra.
 
 ## Tecnologías
 
-- JavaScript (Vanilla).
-- HTML.
-- CSS moderno (variables, responsive).
-- Vite.
-- API de Unsplash.
+- JavaScript (Vanilla)
+- HTML
+- CSS moderno (variables, responsive)
+- Vite
+- API de Unsplash
 - ESLint y Prettier para mantener el código limpio
 - Puedes hacer build para producción con:
   ```sh
@@ -48,28 +58,27 @@ Replica de la red social Pinterest utilizando Vanilla JS, CSS y la API de Unspla
    ```
 5. Abre [http://localhost:5173](http://localhost:5173) ¡listo!
 
-## Demo en vivo
-
-Aquí tienes el enlace:
-[Ver demo aquí](https://dreamy-lebkuchen-b71410.netlify.app/).
-
 ## Cosas a saber
 
 - El código es sencillo y conciso.
 - Todo el DOM se hace con createElement.
-- Puedes navegar con el teclado por toda la app (accesibilidad real).
-- Si la API de Unsplash falla o llegas al límite, verás un mensaje de error.
+- Puedes navegar con el teclado por toda la app.
+- Si la API de Unsplash falla o llegas al límite, verás un mensaje de ERROR.
 - El diseño se adapta a móvil, tablet y escritorio.
 - Si quieres cambiar colores: `src/style.css`.
 
+## Limitaciones conocidas
+
+- Si haces muchas búsquedas seguidas, se llega al límite gratuito de la API Unsplash y dejará de cargar imágenes temporalmente.
+- Lo mismo ocurre en Netlify con las peticiones por día.
+- Se necesita conexión a internet para que funcione.
+
 ## Mejoras futuras
 
-- Añadir login y favoritos para guardar imágenes que te gusten.
-- Guardar búsquedas recientes para acceder rápido a tus temas favoritos.
-- Permitir cambiar entre modo oscuro y claro según la preferencia del usuario.
-- Mejorar la accesibilidad aún más (por ejemplo, soporte para lectores de pantalla).
-- Añadir animaciones suaves al cargar imágenes.
-- ¿Tienes una idea? ¡Puedes proponerla abriendo un issue o un pull request!
+- Añadir login y favoritos para guardar las imágenes que te gusten.
+- Guardar búsquedas recientes para acceder rápido a los temas favoritos.
+- Permitir cambiar de modo claro a oscuro según la preferencia del usuario.
+- Mejorar la accesibilidad
 
 ## Preguntas frecuentes (FAQ)
 
@@ -79,7 +88,7 @@ Aquí tienes el enlace:
 
 **¿Puedo usar esto para mi propio proyecto?**
 
-- ¡Por supuesto! Hazle los cambios que quieras, es publico.
+- ¡Por supuesto! Hazle los cambios que quieras, es público.
 
 **¿Cómo funciona Netlify?**
 
@@ -90,27 +99,15 @@ Aquí tienes el enlace:
 5. Dale a deploy y espera unos segundos.
 6. Si aparece algún tipo de error revisa los pasos anteriores y vuelve a desplegar. ¡A VECES PUEDE FALLAR!
 
-## Limitaciones conocidas
-
-- Si haces muchas búsquedas seguidas, se llega al límite gratuito de la API Unsplash y dejará de cargar imágenes temporalmente.
-- Lo mismo ocurre en Netlify con las peticiones por día.
-- Se necesita conexión a internet para que funcione.
-
-## ¿Tienes un problema o sugerencia?
-
-Si encuentras un bug o una idea para mejorar la app, abre un issue en el repositorio o deja un comentario. ¡Toda ayuda y feedback es bienvenido!
-
 ## Créditos
 
 - Iconos: [Remix Icon](https://remixicon.com/).
 - Fotos: [Unsplash](https://unsplash.com/).
 - Fuentes: [Google Fonts - Inter](https://fonts.google.com/specimen/Inter).
 
-## Vista previa
+## ¿Tienes un problema o sugerencia?
 
-Aquí puedes ver cómo funciona la app:
-
-![Captura de pantalla de Pinterest Async](img/captura.png)
+Si encuentras un bug o una idea para mejorar la app, abre un issue en el repositorio o deja un comentario.
 
 ---
 
