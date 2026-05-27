@@ -54,8 +54,6 @@ export function Card(photo) {
   const textDiv = document.createElement('div');
   textDiv.className = 'card__text';
   info.appendChild(textDiv);
-
-
   const author = document.createElement('p');
   author.className = 'card__author';
   author.textContent = photo.user && photo.user.name ? photo.user.name : 'Sin nombre';
@@ -65,10 +63,10 @@ export function Card(photo) {
   date.className = 'card__date';
   date.textContent = photo?.created_at
     ? new Date(photo.created_at).toLocaleDateString('es-ES', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      })
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    })
     : '';
   textDiv.appendChild(date);
 
