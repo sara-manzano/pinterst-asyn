@@ -14,11 +14,12 @@ Aquí puedes ver cómo funciona la app:
 
 ## Características
 
+- Busca las imágenes en Unsplash.
 - Diseño moderno y responsive.
 - Componentes divididos en módulos (Header, Gallery, Card, Footer).
 - Accesibilidad: navegación por teclado, aria-labels, mensajes claros y concisos.
 - Sin frameworks.
-- Puedes buscar cualquier cosa: “gatos”, “paisajes”, “arte”, lo que se te ocurra.
+- Puedes buscar cualquier tema: “gatos”, “paisajes”, “arte”, lo que se te ocurra.
 
 ## Tecnologías
 
