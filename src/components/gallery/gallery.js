@@ -1,8 +1,8 @@
 import './gallery.css';
 import { Card } from '../card/card.js';
 
-export function Gallery({ onLoadMore }) {
 
+export function Gallery({ onLoadMore }) {
   const wrapper = document.createElement('div');
   wrapper.className = 'gallery-wrapper';
 
@@ -32,6 +32,19 @@ export function Gallery({ onLoadMore }) {
   loadMoreError.hidden = true;
   wrapper.appendChild(loadMoreError);
 
+  let isLoadingMore = false;
+  let hasMoreGlobal = false;
+
+  function onScroll() {
+    if (isLoadingMore || !hasMoreGlobal) return;
+    const rect = section.getBoundingClientRect();
+    if (rect.bottom <= window.innerHeight + 100) {
+      isLoadingMore = true;
+      loadMoreBtn.click();
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+
   function showLoading() {
     section.replaceChildren();
     const loadingMsg = document.createElement('p');
@@ -56,6 +69,7 @@ export function Gallery({ onLoadMore }) {
   function render(photos, total, hasMore) {
     section.replaceChildren();
     loadMoreBtn.hidden = true;
+    hasMoreGlobal = hasMore;
 
     if (photos.length === 0) {
       info.hidden = true;
@@ -77,14 +91,14 @@ export function Gallery({ onLoadMore }) {
 
   function append(photos, hasMore) {
     loadMoreError.hidden = true;
-    const firstNew = section.lastElementChild;
     photos.forEach(photo => section.appendChild(Card(photo)));
     loadMoreBtn.hidden = !hasMore;
     setLoadingMore(false);
-    // Scroll automático al primer nuevo elemento
+    isLoadingMore = false;
     if (section.lastElementChild) {
       section.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
+    hasMoreGlobal = hasMore;
   }
 
   function setLoadingMore(isLoading) {
@@ -103,6 +117,9 @@ export function Gallery({ onLoadMore }) {
     queryLabel.textContent = `Resultados para: "${query}"`;
     queryLabel.hidden = false;
   }
+
+
+
 
   return {
     element: wrapper,

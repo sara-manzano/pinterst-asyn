@@ -16,6 +16,12 @@ export function Card(photo) {
   img.alt = photo?.alt_description || `Foto de ${photo?.user?.name || 'autor desconocido'}`;
   img.loading = 'lazy';
   imgWrapper.appendChild(img);
+  imgWrapper.style.cursor = 'pointer';
+  imgWrapper.addEventListener('click', () => {
+    if (photo.links && photo.links.html) {
+      window.open(photo.links.html, '_blank', 'noopener');
+    }
+  });
 
   const overlay = document.createElement('div');
   overlay.className = 'card__overlay';
