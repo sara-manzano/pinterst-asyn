@@ -1,7 +1,6 @@
 import './gallery.css';
 import { Card } from '../card/card.js';
 
-
 export function Gallery({ onLoadMore }) {
   const wrapper = document.createElement('div');
   wrapper.className = 'gallery-wrapper';
@@ -117,10 +116,6 @@ export function Gallery({ onLoadMore }) {
     queryLabel.textContent = `Resultados para: "${query}"`;
     queryLabel.hidden = false;
   }
-
-
-
-
   return {
     element: wrapper,
     render,

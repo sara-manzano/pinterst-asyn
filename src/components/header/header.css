@@ -1,3 +1,30 @@
+/* --- MEDIA QUERIES RESPONSIVE HEADER --- */
+/* Tablet (≤900px) */
+@media (max-width: 900px) {
+  .header {
+    gap: 6px;
+    padding: 0 8px;
+    height: 58px;
+  }
+  .header__nav {
+    gap: 2px;
+  }
+  .header__search {
+    padding: 0 10px;
+    height: 42px;
+  }
+  .header__logo {
+    width: 36px;
+    height: 36px;
+  }
+  .header__avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
+
+/* Móvil (≤600px) */
 .header {
   position: sticky;
   top: 0;
@@ -158,8 +185,9 @@
 
 @media (max-width: 600px) {
   .header {
-    gap: 6px;
-    padding: 0 10px;
+    gap: 4px;
+    padding: 0 4px;
+    height: 52px;
   }
   .header__nav {
     display: none;
@@ -167,6 +195,20 @@
   .header__icon-button {
     display: none;
   }
+  .header__search {
+    padding: 0 6px;
+    height: 38px;
+  }
+  .header__logo {
+    width: 30px;
+    height: 30px;
+  }
+  .header__avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+}
 }
 
 @media (max-width: 400px) {
