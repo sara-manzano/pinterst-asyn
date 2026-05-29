@@ -116,6 +116,7 @@ export function Gallery({ onLoadMore }) {
     queryLabel.textContent = `Resultados para: "${query}"`;
     queryLabel.hidden = false;
   }
+  
   return {
     element: wrapper,
     render,
