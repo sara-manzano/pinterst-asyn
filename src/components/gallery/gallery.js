@@ -21,8 +21,10 @@ export function Gallery({ onLoadMore }) {
 
   const loadMoreBtn = document.createElement('button');
   loadMoreBtn.className = 'gallery__load-more';
-  loadMoreBtn.textContent = 'Cargar más';
+  loadMoreBtn.innerHTML = '<span class="gallery__load-more-text">Cargar más</span><span class="gallery__spinner" aria-hidden="true" style="display:none;margin-left:8px;"></span>';
   loadMoreBtn.hidden = true;
+  loadMoreBtn.setAttribute('aria-label', 'Cargar más resultados');
+  loadMoreBtn.setAttribute('role', 'button');
   loadMoreBtn.addEventListener('click', onLoadMore);
   wrapper.appendChild(loadMoreBtn);
 
@@ -102,8 +104,18 @@ export function Gallery({ onLoadMore }) {
 
   function setLoadingMore(isLoading) {
     loadMoreBtn.disabled = isLoading;
-    loadMoreBtn.textContent = isLoading ? 'Cargando...' : 'Cargar más';
-    if (isLoading) loadMoreError.hidden = true;
+    const textSpan = loadMoreBtn.querySelector('.gallery__load-more-text');
+    const spinner = loadMoreBtn.querySelector('.gallery__spinner');
+    if (isLoading) {
+      textSpan.textContent = 'Cargando...';
+      spinner.style.display = 'inline-block';
+      spinner.innerHTML = `<svg width="18" height="18" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="31.4 31.4" transform="rotate(-90 25 25)"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.8s" repeatCount="indefinite"/></circle></svg>`;
+      loadMoreError.hidden = true;
+    } else {
+      textSpan.textContent = 'Cargar más';
+      spinner.style.display = 'none';
+      spinner.innerHTML = '';
+    }
   }
 
   function showLoadMoreError(message) {
